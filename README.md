@@ -1,1 +1,1 @@
-<b>print('Hello world')</b>
+<b>print("Hello world");</b>
