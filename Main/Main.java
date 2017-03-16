@@ -70,6 +70,8 @@ public class Main extends Application {
                 public void handle(KeyEvent event) {
                     if (event.getCode().equals(KeyCode.ENTER))
                         pane.getChildren().add(new myFigureThreadedCircle(10, (int) scene.getWidth(), (int)scene.getHeight()));
+                    else if (event.getCode().equals(KeyCode.ESCAPE))
+                        System.exit(1);
                 }
             });
             primaryStage.setScene(scene);
