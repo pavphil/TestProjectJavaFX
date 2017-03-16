@@ -12,11 +12,13 @@ import static java.lang.Thread.sleep;
 public class myFigureThreadedRectangle extends Rectangle {
     private int width, height;
     private Random rnd = new Random();
-    public myFigureThreadedRectangle(int width, int height, int sceneWidth){
+    private int sceneHeight;
+    public myFigureThreadedRectangle(int width, int height, int sceneWidth, int sceneHeight){
         super(width, width);
         super.setTranslateX(Math.abs(new Random().nextInt()%sceneWidth));
         this.width = width;
         this.height = height;
+        this.sceneHeight = sceneHeight;
         super.setFill(new Color(rnd.nextDouble()%255, rnd.nextDouble()%255, rnd.nextDouble()%255, rnd.nextDouble()%255));
         start();
     }
@@ -25,18 +27,27 @@ public class myFigureThreadedRectangle extends Rectangle {
             @Override
             public void run() {
                 boolean vis = true;
-
                 try {
-                    for (int i = 0; i < 10; i++) {
-                        System.out.println(Thread.currentThread());
+                    int tHeight = sceneHeight;
+                    System.out.println(sceneHeight);
+                    for (int i = 0; i < 6000; ) {
+                        if (i <= sceneHeight) {
+                            sceneHeight = tHeight;
+                            setTranslateY(i);
+                            i += 30;
+                        }
+                        else if (i > sceneHeight) {
+                            sceneHeight = 0;
+                            i-= 30;
+                            setTranslateY(i);
+                        }
                         sleep(500);
-                        myFigureThreadedRectangle.super.setTranslateY(15*i);
                     }
                 }catch(InterruptedException ae){
                     ae.printStackTrace();
                 }
                 finally{
-                    myFigureThreadedRectangle.super.setVisible(false);
+                    //setVisible(false);
                 }
             }
         }).start();

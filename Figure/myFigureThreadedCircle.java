@@ -8,8 +8,10 @@ import static java.lang.Thread.sleep;
 
 public class myFigureThreadedCircle extends Circle {
     private Random rnd;
-    public myFigureThreadedCircle(int r, int width){
+    private int height;
+    public myFigureThreadedCircle(int r, int width, int height){
         super(r);
+        this.height = height;
         super.setTranslateX(Math.abs(new Random().nextInt()%width));
         rnd = new Random();
         super.setFill(new Color(rnd.nextDouble()%255, rnd.nextDouble()%255, rnd.nextDouble()%255, rnd.nextDouble()%255));
@@ -20,17 +22,27 @@ public class myFigureThreadedCircle extends Circle {
             @Override
             public void run() {
                 boolean vis = true;
+                int tmp = 0;
                 try {
-                    for (int i = 0; i < 10; i++) {
-                        System.out.println(Thread.currentThread());
+                    int tHeight = height;
+                    for (int i = 0; i < 6000; ) {
+                        if (i <= height) {
+                            height = tHeight;
+                            setTranslateY(i);
+                            i += 30;
+                        }
+                        else if (i > height) {
+                            height = 0;
+                            i-= 30;
+                            setTranslateY(i);
+                        }
                         sleep(500);
-                        myFigureThreadedCircle.super.setTranslateY(15*i);
                     }
                 }catch(InterruptedException ae){
                     ae.printStackTrace();
                 }
                 finally{
-                    myFigureThreadedCircle.super.setVisible(false);
+                    //setVisible(false);
                 }
             }
         }).start();

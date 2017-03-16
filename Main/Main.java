@@ -56,8 +56,8 @@ public class Main extends Application {
                     scenetitle.setTranslateX(++i*40);
                     scenetitle.setFill(new Color(rnd.nextDouble()%255, rnd.nextDouble()%255, rnd.nextDouble()%255, rnd.nextDouble()%255));
                     if (b)
-                        pane.getChildren().add(new myFigureThreadedCircle(10, (int) scene.getWidth()));
-                    else pane.getChildren().add(new myFigureThreadedRectangle(20, 20, (int)scene.getWidth()));
+                        pane.getChildren().add(new myFigureThreadedCircle(10, (int) scene.getWidth(), (int)scene.getHeight()));
+                    else pane.getChildren().add(new myFigureThreadedRectangle(20, 20, (int)scene.getWidth(), (int)scene.getHeight()));
                 }
             });
             grid1.add(tn, 0, 0);
