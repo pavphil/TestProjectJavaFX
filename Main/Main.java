@@ -20,7 +20,6 @@ import javafx.stage.Stage;
 import java.util.Random;
 
 public class Main extends Application {
-    System.out.println();
     private BorderPane bp;
     private GridPane pane;
     private GridPane grid1;
@@ -30,6 +29,7 @@ public class Main extends Application {
     private Text scenetitle;
     private Random rnd = new Random();
     public final void start(Stage primaryStage){
+            System.out.println();
             primaryStage.setTitle("FigureMoving via JavaFX");
             primaryStage.setMaxHeight(1000);
             primaryStage.setMaxWidth(1000);
