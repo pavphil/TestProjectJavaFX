@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import java.util.Random;
 
 public class Main extends Application {
+    System.out.println();
     private BorderPane bp;
     private GridPane pane;
     private GridPane grid1;
