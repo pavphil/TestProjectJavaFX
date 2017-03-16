@@ -7,6 +7,8 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -16,7 +18,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.Random;
-
 
 public class Main extends Application {
     private BorderPane bp;
@@ -63,6 +64,13 @@ public class Main extends Application {
             grid1.add(tn, 0, 0);
             grid1.add(closeButton, 1, 0);
             Thread.setDefaultUncaughtExceptionHandler(h);
+            bp.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                @Override
+                public void handle(KeyEvent event) {
+                    if (event.getCode().equals(KeyCode.ENTER))
+                        pane.getChildren().add(new myFigureThreadedCircle(10, (int) scene.getWidth(), (int)scene.getHeight()));
+                }
+            });
             primaryStage.setScene(scene);
             primaryStage.show();
     }

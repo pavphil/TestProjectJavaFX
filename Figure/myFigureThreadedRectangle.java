@@ -23,22 +23,24 @@ public class myFigureThreadedRectangle extends Rectangle {
         start();
     }
     private void start(){
+        int step = 30;
         new Thread(new Runnable() {
             @Override
             public void run() {
                 boolean vis = true;
                 try {
                     int tHeight = sceneHeight;
-                    System.out.println(sceneHeight);
-                    for (int i = 0; i < 6000; ) {
+                    for (int i = 0, j = 0; i < 6000; j++ ) {
+                        if (j == step)
+                            break;
                         if (i <= sceneHeight) {
                             sceneHeight = tHeight;
                             setTranslateY(i);
-                            i += 30;
+                            i += step;
                         }
                         else if (i > sceneHeight) {
                             sceneHeight = 0;
-                            i-= 30;
+                            i-= step;
                             setTranslateY(i);
                         }
                         sleep(500);
@@ -47,7 +49,7 @@ public class myFigureThreadedRectangle extends Rectangle {
                     ae.printStackTrace();
                 }
                 finally{
-                    //setVisible(false);
+                    setVisible(false);
                 }
             }
         }).start();

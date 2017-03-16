@@ -8,32 +8,36 @@ import static java.lang.Thread.sleep;
 
 public class myFigureThreadedCircle extends Circle {
     private Random rnd;
-    private int height;
+    private int sceneHeight;
+    private int sceneWidth;
     public myFigureThreadedCircle(int r, int width, int height){
         super(r);
-        this.height = height;
-        super.setTranslateX(Math.abs(new Random().nextInt()%width));
+        this.sceneHeight = height;
+        this.sceneWidth = width;
+        super.setTranslateX(Math.abs(new Random().nextInt()%sceneWidth));
         rnd = new Random();
         super.setFill(new Color(rnd.nextDouble()%255, rnd.nextDouble()%255, rnd.nextDouble()%255, rnd.nextDouble()%255));
         start();
     }
     private void start(){
+        int step = 30;
         new Thread(new Runnable() {
             @Override
             public void run() {
                 boolean vis = true;
                 int tmp = 0;
                 try {
-                    int tHeight = height;
-                    for (int i = 0; i < 6000; ) {
-                        if (i <= height) {
-                            height = tHeight;
+                    int tHeight = sceneHeight;
+                    for (int i = 0,j = 0; i < 6000; j++ ) {
+                        if (j == step)
+                            break;
+                        if (i <= sceneHeight) {
+                            sceneHeight = tHeight;
                             setTranslateY(i);
-                            i += 30;
-                        }
-                        else if (i > height) {
-                            height = 0;
-                            i-= 30;
+                            i += step;
+                        } else if (i > sceneHeight) {
+                            sceneHeight = 0;
+                            i -= step;
                             setTranslateY(i);
                         }
                         sleep(500);
@@ -42,7 +46,7 @@ public class myFigureThreadedCircle extends Circle {
                     ae.printStackTrace();
                 }
                 finally{
-                    //setVisible(false);
+                    setVisible(false);
                 }
             }
         }).start();
