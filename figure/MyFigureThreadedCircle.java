@@ -1,29 +1,25 @@
-package TestProjectJavaFX.Figure;
+package TestProjectJavaFX.figure;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Circle;
 
 import java.util.Random;
 
 import static java.lang.Thread.sleep;
 
-/**
- * Created by pavlovf on 16.03.2017.
- */
-public class MyFigureThreadedRectangle extends Rectangle {
-    private int width, height;
-    private Random rnd = new Random();
+public class MyFigureThreadedCircle extends Circle {
+    private Random rnd;
     private int sceneHeight;
-    public MyFigureThreadedRectangle(int width, int height, int sceneWidth, int sceneHeight){
-        super(width, width);
-        super.setTranslateX(Math.abs(new Random().nextInt()%sceneWidth));
-        this.width = width;
-        this.height = height;
-        this.sceneHeight = sceneHeight;
-        super.setFill(new Color(rnd.nextDouble()%255, rnd.nextDouble()%255, rnd.nextDouble()%255, rnd.nextDouble()%255));
+    private int sceneWidth;
+    public MyFigureThreadedCircle(int r, int width, int height){
+        super(r);
+        this.sceneHeight = height;
+        this.sceneWidth = width;
+        setTranslateX(Math.abs(new Random().nextInt()%sceneWidth));
+        rnd = new Random();
+        setFill(new Color(rnd.nextDouble()%255, rnd.nextDouble()%255, rnd.nextDouble()%255, rnd.nextDouble()%255));
         start();
     }
     private void start(){
-        int step = 30;
         int steps = 30;
         new Thread(new Runnable() {
             @Override

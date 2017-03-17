@@ -1,6 +1,7 @@
-package TestProjectJavaFX.Main;
-import TestProjectJavaFX.Figure.myFigureThreadedCircle;
-import TestProjectJavaFX.Figure.myFigureThreadedRectangle;
+package TestProjectJavaFX.main;
+import TestProjectJavaFX.figure.MyFigureThreadedCircle;
+import TestProjectJavaFX.figure.MyFigureThreadedRectangle;
+import TestProjectJavaFX.testedpack.NewWindow;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -59,8 +60,8 @@ public class Main extends Application {
                     scenetitle.setTranslateX(++i*40);
                     scenetitle.setFill(new Color(rnd.nextDouble()%255, rnd.nextDouble()%255, rnd.nextDouble()%255, rnd.nextDouble()%255));
                     if (b)
-                        pane.getChildren().add(new myFigureThreadedCircle(10, (int) scene.getWidth(), (int)scene.getHeight()));
-                    else pane.getChildren().add(new myFigureThreadedRectangle(20, 20, (int)scene.getWidth(), (int)scene.getHeight()));
+                        pane.getChildren().add(new MyFigureThreadedCircle(10, (int) scene.getWidth(), (int)scene.getHeight()));
+                    else pane.getChildren().add(new MyFigureThreadedRectangle(20, 20, (int)scene.getWidth(), (int)scene.getHeight()));
                 }
             });
             grid1.add(tn, 0, 0);
@@ -70,13 +71,23 @@ public class Main extends Application {
                 @Override
                 public void handle(KeyEvent event) {
                     if (event.getCode().equals(KeyCode.ENTER))
-                        pane.getChildren().add(new myFigureThreadedCircle(10, (int) scene.getWidth(), (int)scene.getHeight()));
-                    else if (event.getCode().equals(KeyCode.ESCAPE))
-                        System.exit(1);
+                        pane.getChildren().add(new MyFigureThreadedCircle(10, (int) scene.getWidth(), (int)scene.getHeight()));
+                    else if (event.getCode().equals(KeyCode.ESCAPE)) {
+                        grid1.requestFocus();
+                    }
                     else if (event.getCode().equals(KeyCode.SPACE))
-                        pane.getChildren().add(new myFigureThreadedRectangle(20, 20, (int)scene.getWidth(), (int)scene.getHeight()));
+                        pane.getChildren().add(new MyFigureThreadedRectangle(20, 20, (int)scene.getWidth(), (int)scene.getHeight()));
                 }
             });
+
+           /* Button newWindow = new Button("New window");
+            grid1.add(newWindow, 2, 0);
+            newWindow.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    new NewWindow();
+                }
+            });*/
             primaryStage.setScene(scene);
             primaryStage.show();
     }
