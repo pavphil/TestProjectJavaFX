@@ -23,7 +23,6 @@ public class MyFigureThreadedRectangle extends Rectangle {
         start();
     }
     private void start(){
-        int step = 30;
         int steps = 30;
         new Thread(new Runnable() {
             @Override
