@@ -40,6 +40,7 @@ public class Main extends Application {
             pane.setPadding(new Insets(5, 5, 5, 5));
             grid1.setPadding(new Insets(5, 5, 5, 5));
             grid1.setHgap(5);
+            grid1.setFocusTraversable(true);
             bp.setCenter(pane);
             bp.setBottom(grid1);
             scenetitle = new Text("Welcome to figure moving");
@@ -72,6 +73,8 @@ public class Main extends Application {
                         pane.getChildren().add(new myFigureThreadedCircle(10, (int) scene.getWidth(), (int)scene.getHeight()));
                     else if (event.getCode().equals(KeyCode.ESCAPE))
                         System.exit(1);
+                    else if (event.getCode().equals(KeyCode.SPACE))
+                        pane.getChildren().add(new myFigureThreadedRectangle(20, 20, (int)scene.getWidth(), (int)scene.getHeight()));
                 }
             });
             primaryStage.setScene(scene);
