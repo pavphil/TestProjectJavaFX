@@ -3,6 +3,7 @@ import TestProjectJavaFX.figure.MyFigureThreadedCircle;
 import TestProjectJavaFX.figure.MyFigureThreadedRectangle;
 import TestProjectJavaFX.testedpack.NewWindow;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -55,7 +56,8 @@ public class Main extends Application {
                 private int i = 0;
                 private boolean b;
                 @Override
-                synchronized public void handle(ActionEvent event) {
+                public void handle(ActionEvent event) {
+                    grid1.requestFocus();
                     b = new Random().nextBoolean();
                     scenetitle.setTranslateX(++i*40);
                     scenetitle.setFill(new Color(rnd.nextDouble()%255, rnd.nextDouble()%255, rnd.nextDouble()%255, rnd.nextDouble()%255));
@@ -73,7 +75,7 @@ public class Main extends Application {
                     if (event.getCode().equals(KeyCode.ENTER))
                         pane.getChildren().add(new MyFigureThreadedCircle(10, (int) scene.getWidth(), (int)scene.getHeight()));
                     else if (event.getCode().equals(KeyCode.ESCAPE)) {
-                        grid1.requestFocus();
+                        Platform.exit();
                     }
                     else if (event.getCode().equals(KeyCode.SPACE))
                         pane.getChildren().add(new MyFigureThreadedRectangle(20, 20, (int)scene.getWidth(), (int)scene.getHeight()));
