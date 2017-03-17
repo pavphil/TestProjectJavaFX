@@ -14,9 +14,9 @@ public class myFigureThreadedCircle extends Circle {
         super(r);
         this.sceneHeight = height;
         this.sceneWidth = width;
-        super.setTranslateX(Math.abs(new Random().nextInt()%sceneWidth));
+        setTranslateX(Math.abs(new Random().nextInt()%sceneWidth));
         rnd = new Random();
-        super.setFill(new Color(rnd.nextDouble()%255, rnd.nextDouble()%255, rnd.nextDouble()%255, rnd.nextDouble()%255));
+        setFill(new Color(rnd.nextDouble()%255, rnd.nextDouble()%255, rnd.nextDouble()%255, rnd.nextDouble()%255));
         start();
     }
     private void start(){
