@@ -6,11 +6,11 @@ import java.util.Random;
 
 import static java.lang.Thread.sleep;
 
-public class myFigureThreadedCircle extends Circle {
+public class MyFigureThreadedCircle extends Circle {
     private Random rnd;
     private int sceneHeight;
     private int sceneWidth;
-    public myFigureThreadedCircle(int r, int width, int height){
+    public MyFigureThreadedCircle(int r, int width, int height){
         super(r);
         this.sceneHeight = height;
         this.sceneWidth = width;
@@ -20,24 +20,21 @@ public class myFigureThreadedCircle extends Circle {
         start();
     }
     private void start(){
-        int step = 30;
+        int steps = 30;
         new Thread(new Runnable() {
             @Override
             public void run() {
-                boolean vis = true;
-                int tmp = 0;
+                int movStep = 40;
                 try {
                     int tHeight = sceneHeight;
-                    for (int i = 0,j = 0; i < 6000; j++ ) {
-                        if (j == step)
-                            break;
+                    for (int i = 0, j = 0; j < steps; j++) {
                         if (i <= sceneHeight) {
                             sceneHeight = tHeight;
                             setTranslateY(i);
-                            i += step;
-                        } else if (i > sceneHeight) {
+                            i += movStep;
+                        } else if (i >= sceneHeight) {
                             sceneHeight = 0;
-                            i -= step;
+                            i -= movStep;
                             setTranslateY(i);
                         }
                         sleep(500);
