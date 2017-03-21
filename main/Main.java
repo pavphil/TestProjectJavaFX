@@ -67,8 +67,7 @@ public class Main extends Application {
             });
             grid1.add(tn, 0, 0);
             grid1.add(closeButton, 1, 0);
-            //Thread.setDefaultUncaughtExceptionHandler(h);
-        //changes in localbranch
+            
             bp.setOnKeyPressed(new EventHandler<KeyEvent>() {
                 @Override
                 public void handle(KeyEvent event) {
