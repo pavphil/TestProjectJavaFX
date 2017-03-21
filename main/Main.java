@@ -1,7 +1,6 @@
 package TestProjectJavaFX.main;
 import TestProjectJavaFX.figure.MyFigureThreadedCircle;
 import TestProjectJavaFX.figure.MyFigureThreadedRectangle;
-import TestProjectJavaFX.testedpack.NewWindow;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -68,7 +67,7 @@ public class Main extends Application {
             });
             grid1.add(tn, 0, 0);
             grid1.add(closeButton, 1, 0);
-            //Thread.setDefaultUncaughtExceptionHandler(h);
+            Thread.setDefaultUncaughtExceptionHandler(h);
             bp.setOnKeyPressed(new EventHandler<KeyEvent>() {
                 @Override
                 public void handle(KeyEvent event) {
