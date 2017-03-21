@@ -68,7 +68,7 @@ public class Main extends Application {
             });
             grid1.add(tn, 0, 0);
             grid1.add(closeButton, 1, 0);
-            Thread.setDefaultUncaughtExceptionHandler(h);
+            //Thread.setDefaultUncaughtExceptionHandler(h);
             bp.setOnKeyPressed(new EventHandler<KeyEvent>() {
                 @Override
                 public void handle(KeyEvent event) {
@@ -82,14 +82,14 @@ public class Main extends Application {
                 }
             });
 
-           /* Button newWindow = new Button("New window");
+            /*Button newWindow = new Button("New window");
             grid1.add(newWindow, 2, 0);
             newWindow.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
                     new NewWindow();
                 }
-            });*/
+            });               */
             primaryStage.setScene(scene);
             primaryStage.show();
     }

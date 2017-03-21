@@ -24,9 +24,8 @@ public class MyFigureThreadedRectangle extends Rectangle {
     }
     private void start(){
         int steps = 30;
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
+        new Thread(()-> {
+            {
                 int movStep = 40;
                 try {
                     int tHeight = sceneHeight;

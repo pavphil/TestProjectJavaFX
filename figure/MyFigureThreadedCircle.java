@@ -21,30 +21,27 @@ public class MyFigureThreadedCircle extends Circle {
     }
     private void start(){
         int steps = 30;
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                int movStep = 40;
-                try {
-                    int tHeight = sceneHeight;
-                    for (int i = 0, j = 0; j < steps; j++) {
-                        if (i <= sceneHeight) {
-                            sceneHeight = tHeight;
-                            setTranslateY(i);
-                            i += movStep;
-                        } else if (i >= sceneHeight) {
-                            sceneHeight = 0;
-                            i -= movStep;
-                            setTranslateY(i);
-                        }
-                        sleep(500);
+        new Thread(() -> {
+            int movStep = 40;
+            try {
+                int tHeight = sceneHeight;
+                for (int i = 0, j = 0; j < steps; j++) {
+                    if (i <= sceneHeight) {
+                        sceneHeight = tHeight;
+                        setTranslateY(i);
+                        i += movStep;
+                    } else if (i >= sceneHeight) {
+                        sceneHeight = 0;
+                        i -= movStep;
+                        setTranslateY(i);
                     }
-                }catch(InterruptedException ae){
-                    ae.printStackTrace();
+                    sleep(500);
                 }
-                finally{
-                    setVisible(false);
-                }
+            }catch(InterruptedException ae){
+                ae.printStackTrace();
+            }
+            finally{
+                setVisible(false);
             }
         }).start();
     }

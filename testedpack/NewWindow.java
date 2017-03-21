@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 public class NewWindow {
     public NewWindow(){
         Stage stage1 = new Stage();
+        stage1.setTitle("New window");
         BorderPane bpNew = new BorderPane();
         Scene scene1 = new Scene(bpNew, 500, 275);
         GridPane gpNew = new GridPane();
@@ -26,7 +27,6 @@ public class NewWindow {
             @Override
             public void handle(KeyEvent event) {
                 if (event.getCode().equals(KeyCode.ESCAPE)) {
-                    System.out.println("FF");
                     stage1.close();
                 }
             }
