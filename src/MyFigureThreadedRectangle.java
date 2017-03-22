@@ -6,9 +6,6 @@ import java.util.Random;
 
 import static java.lang.Thread.sleep;
 
-/**
- * Created by pavlovf on 16.03.2017.
- */
 public class MyFigureThreadedRectangle extends Rectangle {
     private int width, height;
     private Random rnd = new Random();
