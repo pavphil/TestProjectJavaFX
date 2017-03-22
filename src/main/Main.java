@@ -1,6 +1,4 @@
-package TestProjectJavaFX.main;
-import TestProjectJavaFX.figure.MyFigureThreadedCircle;
-import TestProjectJavaFX.figure.MyFigureThreadedRectangle;
+package src.main;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -17,6 +15,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import src.MyFigureThreadedCircle;
+import src.MyFigureThreadedRectangle;
+
 
 import java.util.Random;
 
